@@ -1,0 +1,50 @@
+<%- include ('../partials/header'); -%>
+    <div>
+        <div class="col mt-3 ml-0 s12">
+            <a href="/event/add" class="btn btn-success btn-lg">ADD A NEW EVENT</a>
+        </div>
+        <div class="p">
+            <div class="col">
+                <%   if(items.length>0)     { %>
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th>Event Name</th>
+                                <th>START DAY</th>
+                                <th>EXPECTED END DAY</th>
+                                <th>EXPECTED VENUE</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% items.forEach(function(item,index) { %>
+                                <tr>
+
+                                    <td>
+                                        <%= item.name %>
+                                    </td>
+                                    <td>
+                                        <%= item.start %>
+                                    </td>
+                                    <td>
+                                        <%= item.stop %>
+                                    </td>
+                                    <td>
+                                        <%= item.location %>
+                                    </td>
+                                    <td> <a href="/event/edit/<%= item.id %>" class="btn btn-success">EDIT EVENT</a></td>
+                                    <td> <a href="/event/delete/<%= item.id %>" class="btn btn-info">DELETE EVENT</a></td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <p>THERE ARE NO RECORDS IN THE DATABASE</p>
+                        <% } %>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <%- include ('../partials/footer'); -%>
